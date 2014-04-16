@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void reverse(char*);
+void reverse(char *);
 
 void reverse(char *s)
 {
