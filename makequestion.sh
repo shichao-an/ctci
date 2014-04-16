@@ -22,6 +22,7 @@ from __future__ import print_function
 def _test():
     pass
 
+
 def _print():
     pass
 
