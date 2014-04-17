@@ -86,6 +86,13 @@ def add_lists2(l1, l2):
     return res
 
 
+def add_lists3(l1, l2):
+    r1 = reverse_list(l1)
+    r2 = reverse_list(l2)
+    res = add_lists(r1, r2)
+    return reverse_list(res)
+
+
 def _test():
     pass
 
@@ -109,6 +116,10 @@ def _print():
     nl6 = create_list([9, 7, 2])
     rr = add_lists2(nl5, nl6)
     print(restore_list(rr))
+    rrr1 = add_lists3(nl3, nl4)
+    rrr2 = add_lists3(nl5, nl6)
+    print(restore_list(rrr1))
+    print(restore_list(rrr2))
 
 
 if __name__ == '__main__':
