@@ -46,15 +46,15 @@ def _print():
     grid = [
         [0, 0, 1, 0],
         [1, 0, 1, 0],
-        [0, 0, 0, 0],
+        [1, 0, 0, 0],
         [0, 0, 0, 0],
     ]
-    path = []
-    t = {}
+    path1 = []
+    t1 = {}
     y = len(grid) - 1
     x = len(grid[0]) - 1
-    get_path(x, y, path, t, grid)
-    print(path)
+    get_path(x, y, path1, t1, grid)
+    print(path1)
 
 
 if __name__ == '__main__':
