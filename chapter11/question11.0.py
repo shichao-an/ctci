@@ -49,15 +49,24 @@ def quicksort1(a, left, right):
     if left < p - 1:
         quicksort1(a, left, p - 1)
     if p < right:
-        # Inclusive pivot `p`
+        # Inclusive pivot `p` to the right part
         quicksort1(a, p, right)
 
 
 def quicksort2(a, left, right):
+    p = partition2(a, left, right)
+    if left < p - 1:
+        quicksort2(a, left, p - 1)
+    if p < right:
+        # Inclusive pivot `p` to the right part
+        quicksort2(a, p, right)
+
+
+def quicksort3(a, left, right):
     if left < right:
         p = partition3(a, left, right)
-        quicksort2(a, left, p - 1)
-        quicksort2(a, p + 1, right)
+        quicksort3(a, left, p - 1)
+        quicksort3(a, p + 1, right)
 
 
 def _test():
@@ -75,7 +84,7 @@ def _print():
     _as = locals()
     for _a in _as:
         #print(_as[_a])
-        quicksort2(_as[_a], 0, len(_as[_a]) - 1)
+        quicksort3(_as[_a], 0, len(_as[_a]) - 1)
         print(_a, _as[_a])
 
 
