@@ -69,6 +69,35 @@ def quicksort3(a, left, right):
         quicksort3(a, p + 1, right)
 
 
+def merge(a, left, mid, right):
+    t = a[:]
+    left_end = mid
+    right_start = mid + 1
+    p = left
+    while left <= left_end and right_start <= right:
+        if t[left] <= t[right_start]:
+            a[p] = t[left]
+            left += 1
+        else:
+            a[p] = t[right_start]
+            right_start += 1
+        p += 1
+    # Only copy the remaining elements in the left part
+    # Since those in the right part are already there
+    while left <= left_end:
+        a[p] = t[left]
+        p += 1
+        left += 1
+
+
+def mergesort(a, left, right):
+    if left < right:
+        mid = (left + right) / 2
+        mergesort(a, left, mid)
+        mergesort(a, mid + 1, right)
+        merge(a, left, mid, right)
+
+
 def _test():
     pass
 
@@ -84,7 +113,7 @@ def _print():
     _as = locals()
     for _a in _as:
         #print(_as[_a])
-        quicksort3(_as[_a], 0, len(_as[_a]) - 1)
+        mergesort(_as[_a], 0, len(_as[_a]) - 1)
         print(_a, _as[_a])
 
 
