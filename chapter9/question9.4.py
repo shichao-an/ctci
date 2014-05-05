@@ -56,6 +56,22 @@ def get_subsets3(s):
     return res
 
 
+def get_subsets4_aux(s, subset, res):
+    """Backtrack"""
+    res.append(subset[:])
+    for i, c in enumerate(s):
+        subset.append(c)
+        get_subsets4_aux(s[i + 1:], subset, res)
+        subset.pop()
+
+
+def get_subsets4(s):
+    subset = []
+    res = []
+    get_subsets4_aux(s, subset, res)
+    return res
+
+
 def _test():
     pass
 
@@ -66,9 +82,12 @@ def _print():
     print(s1)
     r2 = get_subsets2(s1)
     r3 = get_subsets3(s1)
+    r4 = get_subsets4([1, 2, 3])
+
     print(r1)
     print(r2)
     print(r3)
+    print(r4)
 
 
 if __name__ == '__main__':
