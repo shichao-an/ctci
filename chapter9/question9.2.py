@@ -48,17 +48,6 @@ def get_path(x, y, path, t, grid):
     return success
 
 
-def get_path2(x, y, path, grid, m, n):
-    """DFS, O(mn)"""
-    if x > m - 1 or y > n - 1 or len(path) == m + n - 1:
-        return
-    else:
-        if grid[y][x] != 1:
-            path.append((x, y))
-            get_path2(x + 1, y, path, grid, m, n)
-            get_path2(x, y + 1, path, grid, m, n)
-
-
 def get_paths_aux(x, y, path, grid, m, n, res):
     path.append((x, y))
     if grid[y][x] == 1:
@@ -89,8 +78,8 @@ def _test():
 
 def _print():
     grid = [
-        [0, 0, 1, 0],
-        [1, 0, 1, 0],
+        [0, 0, 0, 0],
+        [1, 0, 1, 1],
         [1, 1, 1, 0],
         [0, 0, 0, 0],
         [1, 1, 1, 0],
@@ -102,9 +91,6 @@ def _print():
     get_path(x, y, path1, t1, grid)
     print(get_num_paths(grid))
     print(path1)
-    path2 = []
-    get_path2(0, 0, path2, grid, len(grid[0]), len(grid))
-    print(path2)
     paths = get_paths(grid)
     print('')
     for path in paths:
