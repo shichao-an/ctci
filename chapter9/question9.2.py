@@ -31,7 +31,6 @@ def get_num_paths(grid):
 
 
 def get_path(x, y, path, t, grid):
-    """Top-Down DP, O(mn)"""
     if (x, y) in t:
         return t[(x, y)]
     path.append((x, y))
