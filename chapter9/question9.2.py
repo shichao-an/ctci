@@ -49,6 +49,8 @@ def get_path(x, y, path, t, grid):
 
 
 def get_paths_aux(x, y, path, grid, m, n, res):
+    if res:
+        return
     path.append((x, y))
     if grid[y][x] == 1:
         path.pop()
@@ -63,12 +65,14 @@ def get_paths_aux(x, y, path, grid, m, n, res):
     path.pop()
 
 
-def get_paths(grid):
+def get_path2(grid):
     path = []
     res = []
     m = len(grid[0])
     n = len(grid)
     get_paths_aux(0, 0, path, grid, m, n, res)
+    if res:
+        return res[0]
     return res
 
 
@@ -79,8 +83,8 @@ def _test():
 def _print():
     grid = [
         [0, 0, 0, 0],
-        [1, 0, 1, 1],
-        [1, 1, 1, 0],
+        [1, 0, 1, 0],
+        [1, 0, 1, 0],
         [0, 0, 0, 0],
         [1, 1, 1, 0],
     ]
@@ -91,10 +95,7 @@ def _print():
     get_path(x, y, path1, t1, grid)
     print(get_num_paths(grid))
     print(path1)
-    paths = get_paths(grid)
-    print('')
-    for path in paths:
-        print(path)
+    print(get_path2(grid))
 
 
 if __name__ == '__main__':
