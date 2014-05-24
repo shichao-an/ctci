@@ -4,7 +4,7 @@ from __future__ import print_function
 def get_permutations1(s):
     """
     Append (or prepend) every character to each permutation of the
-    remaining string
+    string which does not contain the current character
     """
     if not s:
         return ['']
@@ -25,7 +25,7 @@ def insert_at(s, c, i):
 def get_permutations2(s):
     """
     Insert the first (or last) character to every spot of each permutation
-    of the remaining string
+    of the remaining string after this character
     """
     if not s:
         return ['']
