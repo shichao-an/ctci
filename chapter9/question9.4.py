@@ -1,5 +1,9 @@
 from __future__ import print_function
 
+"""
+Write a method to return all subsets of a set
+"""
+
 
 def get_subsets1_aux(s, k):
     if k == 0:
