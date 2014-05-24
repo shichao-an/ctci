@@ -71,8 +71,8 @@ def get_path2(grid):
     m = len(grid[0])
     n = len(grid)
     get_paths_aux(0, 0, path, grid, m, n, res)
-    #if res:
-        #return res[0]
+    if res:
+        return res[0]
     return res
 
 
@@ -99,13 +99,41 @@ def get_path3(grid):
     return path
 
 
+def get_paths4_aux(x, y, path, grid, m, n, res):
+    # Return upon first result (find one result)
+    if res:
+        return  # Remove this line to get complete paths
+    elif x == m and y == n - 1:
+        res.append(path[:])
+    elif x == m or y == n:
+        return
+    elif grid[y][x] == 1:
+        return
+    else:
+        path.append((x, y))
+        get_paths_aux(x + 1, y, path, grid, m, n, res)
+        get_paths_aux(x, y + 1, path, grid, m, n, res)
+        path.pop()
+
+
+def get_path4(grid):
+    path = []
+    res = []
+    m = len(grid[0])
+    n = len(grid)
+    get_paths4_aux(0, 0, path, grid, m, n, res)
+    if res:
+        return res[0]
+    return res
+
+
 def _test():
     pass
 
 
 def _print():
     grid = [
-        [0, 0, 0, 0],
+        [0, 0, 1, 0],
         [1, 0, 1, 0],
         [1, 0, 1, 0],
         [0, 0, 0, 0],
@@ -120,6 +148,7 @@ def _print():
     print(path1)
     print(get_path2(grid))
     print(get_path3(grid))
+    print(get_path4(grid))
 
 
 if __name__ == '__main__':
