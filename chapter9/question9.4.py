@@ -72,6 +72,27 @@ def get_subsets4(s):
     return res
 
 
+def int_to_sets(s, n):
+    """Convert an integer to a set"""
+    res = []
+    i = 0
+    while n > 0:
+        if n & 1 == 1:
+            res.append(s[i])
+        n >>= 1
+        i += 1
+    return res
+
+
+def get_subsets5(s):
+    """Combinatorics/Bit Manipulation"""
+    res = []
+    # k = 0...2^n - 1
+    for k in range(2 ** len(s)):
+        res.append(int_to_sets(s, k))
+    return res
+
+
 def _test():
     pass
 
@@ -83,11 +104,12 @@ def _print():
     r2 = get_subsets2(s1)
     r3 = get_subsets3(s1)
     r4 = get_subsets4([1, 2, 3])
-
+    r5 = get_subsets5([1, 2, 3])
     print(r1)
     print(r2)
     print(r3)
     print(r4)
+    print(r5)
 
 
 if __name__ == '__main__':
