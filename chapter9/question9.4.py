@@ -5,6 +5,9 @@ def get_subsets1_aux(s, k):
     if k == 0:
         return [[]]
     else:
+        # When res = [], it gives all subsets of size k
+        # In this scenario, when k < len(s), it returns []; this is because
+        # the base case (k == 0) will never be reached when s is empty, and
         res = [[]]
         for i in range(len(s)):
             rest_subsets = get_subsets1_aux(s[i + 1:], k - 1)
@@ -20,6 +23,7 @@ def get_subsets1(s):
 
 
 def get_subsets2_aux(s, i):
+    """CTCI recursive solution"""
     if len(s) == i:
         return [[]]
     else:
@@ -85,7 +89,7 @@ def int_to_sets(s, n):
 
 
 def get_subsets5(s):
-    """Combinatorics/Bit Manipulation"""
+    """CTCI Combinatorics/Bit Manipulation"""
     res = []
     # k = 0...2^n - 1
     for k in range(2 ** len(s)):
