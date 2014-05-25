@@ -1,5 +1,12 @@
 from __future__ import print_function
 
+"""
+Implement the "paint fill" function that one might see on many image editing
+programs. That is, given a screen (represented by a two-dimensional array of
+colors), a point, and a new color, fill in the surrounding area until the
+color changes from the original color.
+"""
+
 
 def paint_fill_aux(screen, x, y, old_color, new_color):
     if x < 0 or y < 0 or x >= len(screen[0]) or y >= len(screen):
