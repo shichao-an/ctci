@@ -1,5 +1,11 @@
 from __future__ import print_function
 
+"""
+Implement an algorithm to print all valid (i.e. properly opened and closed)
+combinations of n-pairs of parentheses.
+
+"""
+
 
 def generate_parens1_aux(left, right, cand, res):
     """
