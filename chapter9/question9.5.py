@@ -1,6 +1,11 @@
 from __future__ import print_function
 
 
+"""
+Write a method to compute all permutations of a string
+"""
+
+
 def get_permutations1(s):
     """
     Append (or prepend) every character to each permutation of the
