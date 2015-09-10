@@ -1,5 +1,11 @@
 from __future__ import print_function
 
+"""
+Given an infinite number of quarters (25 cents), dimes (10 cents), nickels (5
+cents) and pennies (1 cent), write code to calculate the number of ways of
+representing n cents.
+"""
+
 
 def make_change(n, changes):
     """
@@ -39,8 +45,10 @@ def make_change2(n, changes):
 
 def make_change3_aux(n, changes, m):
     """Bottom-Up DP"""
+    # t[i][j] means number of representing ways when using first j coins to
+    # make n
     t = [[0 for i in changes] for i in range(n + 1)]
-    for i in range(0, n + 1):
+    for i in range(n + 1):
         for j in range(m + 1):
             if i == 0:
                 t[i][j] = 1
