@@ -43,27 +43,38 @@ def make_change2(n, changes):
     return make_change2_aux(n, changes, len(changes) - 1, t)
 
 
-def make_change3_aux(n, changes, m):
-    """Bottom-Up DP"""
-    # t[i][j] means number of representing ways when using first j coins to
-    # make n
-    t = [[0 for i in changes] for i in range(n + 1)]
-    for i in range(n + 1):
-        for j in range(m + 1):
-            if i == 0:
-                t[i][j] = 1
-            else:
-                x = y = 0
-                if i - changes[j] >= 0:
-                    x = t[i - changes[j]][j]
-                if j - 1 >= 0:
-                    y = t[i][j - 1]
-                t[i][j] = x + y
-    return t[n][m]
-
-
 def make_change3(n, changes):
-    return make_change3_aux(n, changes, len(changes) - 1)
+    """Bottom-Up DP"""
+    # t[i][j] means number of representing ways when using first j + 1 coins
+    # (coins[0] through coins[j]) to make i
+    t = [[0 for i in changes] for i in range(n + 1)]
+    m = len(changes)
+    for j in range(m):
+        t[0][j] = 1
+    for i in range(1, n + 1):
+        for j in range(m):
+            x = y = 0
+            if i - changes[j] >= 0:
+                x = t[i - changes[j]][j]
+            if j - 1 >= 0:
+                y = t[i][j - 1]
+            t[i][j] = x + y
+    return t[n][m - 1]
+
+
+def make_change4(n, changes):
+    m = len(changes)
+    # t[i][j] means number of ways when using first j coins to make i
+    t = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+    for j in range(m + 1):
+        t[0][j] = 1
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            x = 0
+            if i - changes[j - 1] >= 0:
+                x = t[i - changes[j - 1]][j]
+            t[i][j] = t[i][j - 1] + x
+    return t[n][m]
 
 
 def _test():
@@ -79,6 +90,8 @@ def _print():
     print(r2)
     r3 = make_change3(n1, c1)
     print(r3)
+    r4 = make_change4(n1, c1)
+    print(r4)
 
 
 if __name__ == '__main__':
